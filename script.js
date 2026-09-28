@@ -1,47 +1,79 @@
-// MOBILE MENU
+// ================= MOBILE MENU =================
 
 const menuBtn = document.querySelector(".menu-btn");
+
 const navLinks = document.querySelector(".nav-links");
 
-menuBtn.addEventListener("click", () => {
+
+menuBtn.addEventListener("click", function () {
+
     navLinks.classList.toggle("show");
-});
-
-
-// CLOSE MENU AFTER CLICK
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-
-    link.addEventListener("click", () => {
-        navLinks.classList.remove("show");
-    });
 
 });
 
 
-// SCROLL ANIMATION
 
-const observer = new IntersectionObserver(
-    (entries) => {
+// ================= CLOSE MOBILE MENU =================
 
-        entries.forEach(entry => {
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(function (link) {
 
-            if (entry.isIntersecting) {
-                entry.target.classList.add("active");
-            }
+        link.addEventListener("click", function () {
+
+            navLinks.classList.remove("show");
 
         });
 
-    },
-    {
-        threshold: 0.15
-    }
+    });
+
+
+
+// ================= SCROLL ANIMATION =================
+
+const observer =
+    new IntersectionObserver(
+
+        function (entries) {
+
+            entries.forEach(function (entry) {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("active");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+
+const animatedElements = document.querySelectorAll(
+
+    ".hero-content, " +
+    ".hero-card, " +
+    ".section-title, " +
+    ".about-text, " +
+    ".education-card, " +
+    ".skill-card, " +
+    ".project-card, " +
+    ".timeline-item, " +
+    ".coding-card, " +
+    ".contact-content"
+
 );
 
 
-document.querySelectorAll(
-    ".hero-content, .hero-card, .section-title, .about-text, .education-card, .skill-card, .project-card, .timeline-item, .coding-card, .contact-content"
-).forEach(element => {
+
+animatedElements.forEach(function (element) {
 
     element.classList.add("reveal");
 
@@ -50,7 +82,8 @@ document.querySelectorAll(
 });
 
 
-// FOOTER YEAR
+
+// ================= FOOTER YEAR =================
 
 document.getElementById("year").textContent =
     new Date().getFullYear();
